@@ -38,7 +38,7 @@ public class BodySourceView : MonoBehaviour
 
     public float rightShoulderY;
     public float leftShoulderY;
-
+  
     public float leftAnkleY;
     public float rightAnkleY;
 
@@ -195,7 +195,7 @@ public class BodySourceView : MonoBehaviour
             //for each joint create a cube
             GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
             //the joint cube is scaled, given a name and assigned to the body     
-            jointObj.transform.localScale = new Vector3(0.000005f, 0.000005f, 0.000005f);
+            jointObj.transform.localScale = new Vector3(0.00005f, 0.00005f, 0.00005f);
             //jointObj.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
             jointObj.name = jt.ToString();
