@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
-    //public float moveSpeed = 1;
-   // private Vector3 direction = Vector3.forward;
+    public float moveSpeed = 1;
+    private Vector3 direction = Vector3.forward;
+    
     public int maxHealth = 100;
     public int currentHealth;
     public CollectibleControler gameOver;
@@ -55,9 +56,9 @@ public class PlayerMove : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            print(currentHealth);
             speed.moveSpeed = 0;
             gameOver.GameOver();
         }
     }
-
 }
