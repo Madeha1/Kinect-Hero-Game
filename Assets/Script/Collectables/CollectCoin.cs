@@ -8,8 +8,13 @@ public class CollectCoin : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        coinFX.Play();
-        CollectibleControler.coinCount += 1;
-        this.gameObject.SetActive(false);
+        if(other.tag == "Hips")
+        {
+            coinFX.Play();
+            CollectibleControler.coinCount += 1;
+            this.gameObject.SetActive(false);
+
+        }
+
     }
 }
