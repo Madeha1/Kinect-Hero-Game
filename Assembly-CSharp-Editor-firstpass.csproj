@@ -47,12 +47,12 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Standard Assets\Editor\KinectCopyPluginDataHelper.cs" />
-     <Compile Include="Assets\Plugins\TextToTMP\Editor\Utilities.cs" />
-     <Compile Include="Assets\Plugins\TextToTMP\Editor\ReferenceCollection.cs" />
-     <Compile Include="Assets\Plugins\TextToTMP\Editor\ComponentUpgrade.cs" />
-     <Compile Include="Assets\Plugins\TextToTMP\Editor\ScriptUpgrade.cs" />
      <Compile Include="Assets\Plugins\TextToTMP\Editor\TextToTMPWindow.cs" />
+     <Compile Include="Assets\Plugins\TextToTMP\Editor\ScriptUpgrade.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\KinectCopyPluginDataHelper.cs" />
+     <Compile Include="Assets\Plugins\TextToTMP\Editor\ReferenceCollection.cs" />
+     <Compile Include="Assets\Plugins\TextToTMP\Editor\Utilities.cs" />
+     <Compile Include="Assets\Plugins\TextToTMP\Editor\ComponentUpgrade.cs" />
  <Reference Include="UnityEngine">
  <HintPath>D:/2020.3.18f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

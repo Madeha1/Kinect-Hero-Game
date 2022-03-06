@@ -10,7 +10,7 @@ public class TorsoRotation : MonoBehaviour
     public int X = 0;
     public float Y = 180;
     public int Z = 0;
-    
+
     // Update is called once per frame
     void Update()
     {

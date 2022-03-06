@@ -35,6 +35,8 @@ public class BodySourceView : MonoBehaviour
     public GameObject leftElbowObj;
     public GameObject pelvisObj;//حوض
     //public GameObject centroTorso;
+    public GameObject sensorMessage;
+    public Change change;
 
     public float rightShoulderY;
     public float leftShoulderY;
@@ -102,9 +104,12 @@ public class BodySourceView : MonoBehaviour
         Kinect.Body[] data = _BodyManager.GetData();
         if (data == null)
         {
+            sensorMessage.SetActive(true);
+            change.moveSpeed = 0;
+
             return;
         }
-
+        print(data);
         //Add ID when a body is detected
         List<ulong> trackedIds = new List<ulong>();
         foreach (var body in data)
@@ -132,7 +137,6 @@ public class BodySourceView : MonoBehaviour
                 user = false;
             }
         }
-
         //Wait for the Kinect to detect a body
         foreach (var body in data)
         {
@@ -146,10 +150,19 @@ public class BodySourceView : MonoBehaviour
             {
                 if (!_Bodies.ContainsKey(body.TrackingId))
                 {
-                    
                     _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
+                    //When new Body added
+                    if (_Bodies.Count > 1 || _Bodies.Count == 0)
+                    {
+                        sensorMessage.SetActive(true);
+                        change.moveSpeed = 0;                        
+                    }
+                    else
+                    {
+                        sensorMessage.SetActive(false);
+                        change.moveSpeed = 6;
+                    }
                 }
-
                 user = true;
 
                 //place the cubes in the positions corresponding to each joint
@@ -173,6 +186,20 @@ public class BodySourceView : MonoBehaviour
                 //elbows              
                 rightElbowObj.transform.position = new Vector3(rightElbow.x, rightElbow.y, rightElbow.z);
                 leftElbowObj.transform.position = new Vector3(leftElbow.x, leftElbow.y, leftElbow.z);
+            }
+            else
+            {
+                //All the time(when a body is out) Just one player;
+                if (_Bodies.Count > 1 || _Bodies.Count == 0)
+                {
+                    sensorMessage.SetActive(true);
+                    change.moveSpeed = 0;
+                }
+                else
+                {
+                    sensorMessage.SetActive(false);
+                    change.moveSpeed = 6;
+                }
             }
         }
     }
