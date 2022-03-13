@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Obsticale : MonoBehaviour
 {
@@ -23,16 +25,17 @@ public class Obsticale : MonoBehaviour
 
     void TakeDamage(int damage)
     {
+        print("Before" + player.currentHealth);
+
         player.currentHealth -= damage;
-        Debug.Log(player.currentHealth);
+        Debug.Log("After" + player.currentHealth);
 
         healthBar.SetHealth(player.currentHealth);
 
         if (player.currentHealth <= 0)
         {
-            print(player.currentHealth);
-            speed.moveSpeed = 0;
-            gameOver.GameOver();
+            SceneManager.LoadScene(2);
+
         }
 
     }

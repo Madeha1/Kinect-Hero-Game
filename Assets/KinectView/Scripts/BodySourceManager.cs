@@ -3,11 +3,14 @@ using System.Collections;
 using Windows.Kinect;
 
 public class BodySourceManager : MonoBehaviour 
-{
+{    
     private KinectSensor _Sensor;
     private BodyFrameReader _Reader;
     private Body[] _Data = null;
-    
+
+    public GameObject sensorMessage;
+    public Change change;
+
     public Body[] GetData()
     {
         return _Data;
@@ -26,11 +29,17 @@ public class BodySourceManager : MonoBehaviour
             {
                 _Sensor.Open();
             }
-        }   
+        }
+       
     }
     
     void Update () 
     {
+        if(Runtime.Kinects.Count == 0)
+        {
+            print("zero");
+        }
+
         if (_Reader != null)
         {
             var frame = _Reader.AcquireLatestFrame();
@@ -46,7 +55,12 @@ public class BodySourceManager : MonoBehaviour
                 frame.Dispose();
                 frame = null;
             }
-        }    
+        }  
+        if(_Sensor == null)
+        {
+            sensorMessage.SetActive(true);
+            change.moveSpeed = 0;
+        }
     }
     
     void OnApplicationQuit()

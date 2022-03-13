@@ -109,7 +109,6 @@ public class BodySourceView : MonoBehaviour
 
             return;
         }
-        print(data);
         //Add ID when a body is detected
         List<ulong> trackedIds = new List<ulong>();
         foreach (var body in data)
@@ -160,7 +159,7 @@ public class BodySourceView : MonoBehaviour
                     else
                     {
                         sensorMessage.SetActive(false);
-                        change.moveSpeed = 6;
+                        change.moveSpeed = 10;
                     }
                 }
                 user = true;
@@ -198,7 +197,7 @@ public class BodySourceView : MonoBehaviour
                 else
                 {
                     sensorMessage.SetActive(false);
-                    change.moveSpeed = 6;
+                    change.moveSpeed = 10;
                 }
             }
         }
