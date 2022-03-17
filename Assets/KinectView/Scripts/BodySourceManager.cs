@@ -35,11 +35,6 @@ public class BodySourceManager : MonoBehaviour
     
     void Update () 
     {
-        if(Runtime.Kinects.Count == 0)
-        {
-            print("zero");
-        }
-
         if (_Reader != null)
         {
             var frame = _Reader.AcquireLatestFrame();
