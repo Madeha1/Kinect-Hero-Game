@@ -5,11 +5,13 @@ public class GroundTile : MonoBehaviour
 
     GroundSpawner groundSpawner;
     public GameObject treeObstacle;
+    public GameObject coin;
 
     void Start()
     {
         groundSpawner = GameObject.FindObjectOfType<GroundSpawner>();
         SpawnObstacle();
+        SpawnCoin();
     }
 
     private void OnTriggerExit(Collider other)
@@ -26,6 +28,17 @@ public class GroundTile : MonoBehaviour
         Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
         //Spawn the obstecale at the position
         Instantiate(treeObstacle, spawnPoint.position, Quaternion.identity, transform);
+
+    }
+
+    void SpawnCoin()
+    {
+        //choose a random point to spawn the coin
+        //2 is included but 5 not and they represent the middle, left and right;
+        int coinSpawnIndex = Random.Range(5, 11);
+        Transform spawnPoint = transform.GetChild(coinSpawnIndex).transform;
+        //Spawn the coin at the position
+        Instantiate(coin, spawnPoint.position, Quaternion.Euler(90, 0, 0), transform);
 
     }
 

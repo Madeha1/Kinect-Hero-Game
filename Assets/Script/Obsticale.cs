@@ -6,13 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class Obsticale : MonoBehaviour
 {
-    public CollectibleControler gameOver;
-    public Change speed;
-    public PlayerMove player;
+    private PlayerMove player;
 
-    public HealthBar healthBar;
+    private HealthBar healthBar;
 
+    private void Start() { 
+        player = GameObject.FindObjectOfType<PlayerMove>();
+        healthBar = GameObject.FindObjectOfType<HealthBar>();
+        Debug.Log(player.currentHealth);
 
+    }
     void OnTriggerEnter(Collider other)
     {
 
@@ -39,15 +42,4 @@ public class Obsticale : MonoBehaviour
         }
 
     }
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
 }
