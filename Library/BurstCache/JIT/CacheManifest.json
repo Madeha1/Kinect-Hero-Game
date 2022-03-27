@@ -31,7 +31,7 @@
     },
     {
       "FullName": "Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-03-21T12:40:18.5915843Z"
+      "LastWriteTime": "2022-03-27T11:53:42.5807587Z"
     }
   ],
   "Functions": [
@@ -130,7 +130,7 @@
     {
       "FullName": "System.Void UnityEngine.Animations.ProcessAnimationJobStruct`1<UnityEngine.Animations.Rigging.TwistChainJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
       "ModuleOptionsHash": 8794384452606821980,
-      "ModuleHash": "36ba10cf4b15b7b6e4b1b81e13476163",
+      "ModuleHash": "948bc06602205c7f633bf24069460406",
       "LinkName": "5ECB3D82397A34C6",
       "AssemblyDependencyIndices": [
         3,
