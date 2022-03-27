@@ -194,8 +194,8 @@ public class BodySourceView : MonoBehaviour
                     sensorMessage.SetActive(true);
                     change.moveSpeed = 0;
                 }
-                else
-                {
+                else if(_BodyManager.isAvailable()) //check if there is one body and at the same time the sensor is connected
+                { 
                     sensorMessage.SetActive(false);
                     change.moveSpeed = 10;
                 }

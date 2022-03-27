@@ -404,7 +404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f9a3904d615026498e7b074762bb1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeObstacle: {fileID: 7939146479971169087, guid: 9001227546272444493fe3a6dbc1d18b, type: 3}
+  treeObstacle: {fileID: 1888824221680634, guid: dc6d349dc771d4b4cbe60d67bf4660ea, type: 3}
+  rockObstacle: {fileID: 7939146479971169087, guid: 9001227546272444493fe3a6dbc1d18b, type: 3}
   coin: {fileID: 9188842889041033232, guid: 75ea4170ed7ca9d45b33690e14ea743f, type: 3}
 --- !u!1 &7806777920672579635
 GameObject:

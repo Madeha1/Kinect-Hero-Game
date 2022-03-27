@@ -35,6 +35,12 @@ public class BodySourceManager : MonoBehaviour
     
     void Update () 
     {
+        if (!isAvailable())
+        {
+            sensorMessage.SetActive(true);
+            change.moveSpeed = 0;
+        }
+
         if (_Reader != null)
         {
             var frame = _Reader.AcquireLatestFrame();
@@ -75,5 +81,10 @@ public class BodySourceManager : MonoBehaviour
             
             _Sensor = null;
         }
+    }
+
+    public bool isAvailable()
+    {
+        return _Sensor.IsAvailable;
     }
 }
