@@ -4,6 +4,8 @@ public class GroundTile : MonoBehaviour
 {
     GroundSpawner groundSpawner;
     public GameObject treeObstacle;
+    public GameObject rockObstacle;
+
     public GameObject coin;
 
     void Start()
@@ -26,7 +28,18 @@ public class GroundTile : MonoBehaviour
         int obstacleSpawnIndex = Random.Range(2, 5);
         Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
         //Spawn the obstecale at the position
-        Instantiate(treeObstacle, spawnPoint.position, Quaternion.identity, transform);
+        int rand = Random.Range(1, 3);
+        GameObject obstacle;
+        if (rand == 1)
+        {
+            obstacle = treeObstacle;
+        }
+        else
+        {
+            obstacle = rockObstacle;
+        }
+        Instantiate(obstacle, spawnPoint.position, Quaternion.identity, transform);
+        Instantiate(obstacle, spawnPoint.position, Quaternion.identity, transform);
     }
 
     void SpawnCoin()

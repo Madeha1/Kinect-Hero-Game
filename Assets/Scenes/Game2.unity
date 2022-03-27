@@ -871,7 +871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a57641ade2b1d4b88796ea8b4a8a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCount: 0
   coinCountDisplay: {fileID: 670330925}
   highScore: {fileID: 1809846959}
   gameOver: {fileID: 0}
@@ -1374,7 +1373,6 @@ GameObject:
   - component: {fileID: 387162142}
   - component: {fileID: 387162145}
   - component: {fileID: 387162144}
-  - component: {fileID: 387162143}
   m_Layer: 5
   m_Name: detect
   m_TagString: Untagged
@@ -1403,19 +1401,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &387162143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 387162141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf23ca17fa56e974a99dae6f225a33a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointsText: {fileID: 0}
 --- !u!114 &387162144
 MonoBehaviour:
   m_ObjectHideFlags: 0

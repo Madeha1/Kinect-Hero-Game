@@ -23,13 +23,13 @@ public class GameOver : MonoBehaviour
 
     public void Restart()
     {
-        //CollectibleControler.coinCount = 0;
+        CollectibleControler.coinCount = 0;
         SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
     {
-        //CollectibleControler.coinCount = 0;
+        CollectibleControler.coinCount = 0;
         SceneManager.LoadScene(1);
     }
 }
