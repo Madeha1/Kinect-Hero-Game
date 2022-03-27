@@ -5,7 +5,7 @@ using UnityEngine;
 public class Change : MonoBehaviour
 {
 
-    public float moveSpeed = 6;
+    public float moveSpeed = 16;
 
     void Start()
     {

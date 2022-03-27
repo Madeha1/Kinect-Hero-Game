@@ -104,8 +104,8 @@ public class BodySourceView : MonoBehaviour
         Kinect.Body[] data = _BodyManager.GetData();
         if (data == null)
         {
-            //sensorMessage.SetActive(true);
-            //change.moveSpeed = 0;
+            sensorMessage.SetActive(true);
+            change.moveSpeed = 0;
 
             return;
         }
@@ -191,8 +191,8 @@ public class BodySourceView : MonoBehaviour
                 //All the time(when a body is out) Just one player;
                 if (_Bodies.Count > 1 || _Bodies.Count == 0)
                 {
-                    //sensorMessage.SetActive(true);
-                    //change.moveSpeed = 0;
+                    sensorMessage.SetActive(true);
+                    change.moveSpeed = 0;
                 }
                 else
                 {

@@ -34,12 +34,14 @@ public class GroundTile : MonoBehaviour
         //choose a random point to spawn the coin
         int coinSpawnIndex = Random.Range(5, 11);
         Transform spawnPoint = transform.GetChild(coinSpawnIndex).transform;
-        //spawnPoint2 = new Vector3(spawnPoint.x);
+        Vector3 spawnPointPosioton2 = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z - 1.2f);
+        Vector3 spawnPointPosioton3 = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z - 2.4f);
         //Spawn the coin at the position
-        //Instantiate(coin, spawnPoint.position, Quaternion.Euler(90, 0, 0), transform);
-        //Instantiate(coin, spawnPoint.position, Quaternion.Euler(90, 0, 0), transform);
-        //Instantiate(coin, spawnPoint.position, Quaternion.Euler(90, 0, 0), transform);
+        Instantiate(coin, spawnPoint.position, Quaternion.Euler(90, 0, 0), transform);
+        Instantiate(coin, spawnPointPosioton2, Quaternion.Euler(90, 0, 0), transform);
+        Instantiate(coin, spawnPointPosioton3, Quaternion.Euler(90, 0, 0), transform);
     }
+
 
     void Update()
     {

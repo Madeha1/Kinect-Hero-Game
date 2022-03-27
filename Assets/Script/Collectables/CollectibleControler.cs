@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CollectibleControler : MonoBehaviour
 {
-    public int coinCount;
+    public static int coinCount;
     public GameObject coinCountDisplay;
     public Text highScore;
 

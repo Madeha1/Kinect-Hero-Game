@@ -8,9 +8,6 @@ public class Finish : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject finish;
-    public Change speed;
-
 
     void OnTriggerEnter(Collider other)
     {
