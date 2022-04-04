@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5482879, g: 0.85491484, b: 0.9223486, a: 1}
+  m_IndirectSpecularColor: {r: 0.5482909, g: 0.8549135, b: 0.9223467, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -186,7 +186,7 @@ MonoBehaviour:
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
   m_SourceObjectsGUIToggle: 1
-  m_SettingsGUIToggle: 0
+  m_SettingsGUIToggle: 1
 --- !u!4 &27755263 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6662353926028982323, guid: 9660f6c254c6f45468344ea3d5dbcfcc, type: 3}
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    m_ConstrainedObject: {fileID: 589600165}
+    m_ConstrainedObject: {fileID: 317652813}
     m_OverrideSource: {fileID: 38489567}
     m_OverridePosition: {x: 0, y: 0, z: 0}
     m_OverrideRotation: {x: 0, y: 0, z: 0}
@@ -953,7 +953,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174869076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.482, y: 1.291, z: 0}
+  m_LocalPosition: {x: 0.415, y: 1.291, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 19975965}
@@ -1693,12 +1693,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    m_ConstrainedObject: {fileID: 317652813}
+    m_ConstrainedObject: {fileID: 589600165}
     m_OverrideSource: {fileID: 481894191}
     m_OverridePosition: {x: 0, y: 0, z: 0}
     m_OverrideRotation: {x: 0, y: 0, z: 0}
-    m_PositionWeight: 0.4
-    m_RotationWeight: 0.4
+    m_PositionWeight: 0
+    m_RotationWeight: 1
     m_Space: 2
   m_SourceObjectsGUIToggle: 1
   m_SettingsGUIToggle: 1
@@ -2586,7 +2586,7 @@ GameObject:
   - component: {fileID: 704781162}
   - component: {fileID: 704781164}
   m_Layer: 0
-  m_Name: RightShoulderTarget
+  m_Name: LeftShoulderTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2637,7 +2637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    m_ConstrainedObject: {fileID: 481894191}
+    m_ConstrainedObject: {fileID: 38489567}
     m_SourceObjects:
       m_Length: 1
       m_Item0:
@@ -4101,7 +4101,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1188673389}
   - component: {fileID: 1188673390}
-  - component: {fileID: 1188673391}
   m_Layer: 0
   m_Name: leftArmTarget
   m_TagString: Untagged
@@ -4138,24 +4137,7 @@ MonoBehaviour:
   leftHand: {fileID: 1188673388}
   objectWithBodySourceView: {fileID: 112136118}
   X: 0
-  Y: -90
-  Z: 0
---- !u!114 &1188673391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188673388}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c47452525a18ffc46a94af6e82ff4349, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rightHand: {fileID: 1188673388}
-  objectWithBodySourcViewScipt: {fileID: 112136118}
-  X: 0
-  Y: -90
+  Y: 90
   Z: 0
 --- !u!1 &1201387539
 GameObject:
@@ -4207,7 +4189,7 @@ GameObject:
   - component: {fileID: 1202934085}
   - component: {fileID: 1202934087}
   m_Layer: 0
-  m_Name: LeftShoulderTarget
+  m_Name: RightShoulderTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4258,7 +4240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    m_ConstrainedObject: {fileID: 38489567}
+    m_ConstrainedObject: {fileID: 481894191}
     m_SourceObjects:
       m_Length: 1
       m_Item0:
@@ -5467,7 +5449,7 @@ MonoBehaviour:
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
   m_SourceObjectsGUIToggle: 1
-  m_SettingsGUIToggle: 0
+  m_SettingsGUIToggle: 1
 --- !u!4 &1527181543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4435692963222217296, guid: 9660f6c254c6f45468344ea3d5dbcfcc, type: 3}
@@ -6432,7 +6414,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2143905507}
   - component: {fileID: 2143905508}
-  - component: {fileID: 2143905509}
   m_Layer: 0
   m_Name: RightArmTarget
   m_TagString: Untagged
@@ -6468,25 +6449,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightHand: {fileID: 2143905506}
   objectWithBodySourcViewScipt: {fileID: 112136118}
-  X: 180
-  Y: 90
-  Z: 0
---- !u!114 &2143905509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143905506}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1184ce907a61fc34a9ae20bfa551ac5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHand: {fileID: 2143905506}
-  objectWithBodySourceView: {fileID: 112136118}
-  X: 180
-  Y: 90
+  X: 0
+  Y: -90
   Z: 0
 --- !u!1001 &9188842889452356878
 PrefabInstance:

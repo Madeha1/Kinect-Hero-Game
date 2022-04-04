@@ -290,6 +290,8 @@ public class BodySourceView : MonoBehaviour
             {
                 leftShoulderQ = GetQuaternionJoint(body, jt);
                 leftShoulderY = map(leftShoulderQ.x, 0.70f, 0.80f, 0, -30);
+                //leftShoulderY = map(leftShoulderQ.x, 0.70f, 0.80f, 0, 30);
+
             }
 
             if (jt.ToString().Equals("ShoulderRight"))
