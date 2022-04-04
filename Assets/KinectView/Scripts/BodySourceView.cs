@@ -172,8 +172,8 @@ public class BodySourceView : MonoBehaviour
                 leftHandObj.transform.position = new Vector3(leftHand.x, leftHand.y, leftHand.z);
 
                 //feet
-                rightFootObj.transform.position = new Vector3(roundOut(rightFoot.x), roundOut(rightFoot.y), roundOut(rightFoot.z));
-                leftFootObj.transform.position = new Vector3(roundOut(leftFoot.x), roundOut(leftFoot.y), roundOut(leftFoot.z));
+                //rightFootObj.transform.position = new Vector3(roundOut(rightFoot.x), roundOut(rightFoot.y), roundOut(rightFoot.z));
+                //leftFootObj.transform.position = new Vector3(roundOut(leftFoot.x), roundOut(leftFoot.y), roundOut(leftFoot.z));
 
                 //knee
                 rightKneeObj.transform.position = new Vector3(roundOut(rightKnee.x), roundOut(rightKnee.y), roundOut(rightKnee.z));
@@ -300,30 +300,30 @@ public class BodySourceView : MonoBehaviour
                 rightShoulderY = map(rightShoulderQ.x, 0.80f, 0.70f, 0, -30);
             }
 
-            if (jt.ToString().Equals("AnkleLeft"))
-            {
-                leftFoot = GetVector3FromJoint(sourceJoint);
-                //print(pieIzk.x + "   " + pieIzk.y + "   " + pieIzk.z);
+            //if (jt.ToString().Equals("AnkleLeft"))
+            //{
+            //    leftFoot = GetVector3FromJoint(sourceJoint);
+            //    //print(pieIzk.x + "   " + pieIzk.y + "   " + pieIzk.z);
 
-                leftAnkleQ = GetQuaternionJoint(body, jt);
-                if (leftAnkleQ.x < -0.6)
-                {
-                    leftAnkleY = 90;
-                }
-                else
-                {
-                    leftAnkleY = map(leftAnkleQ.x, 0.9f, -0.5f, 50, 170);
-                }
-            }
+            //    leftAnkleQ = GetQuaternionJoint(body, jt);
+            //    if (leftAnkleQ.x < -0.6)
+            //    {
+            //        leftAnkleY = 90;
+            //    }
+            //    else
+            //    {
+            //        leftAnkleY = map(leftAnkleQ.x, 0.9f, -0.5f, 50, 170);
+            //    }
+            //}
 
-            if (jt.ToString().Equals("AnkleRight"))
-            {
-                rightFoot = GetVector3FromJoint(sourceJoint);
-                //print(pieDer.x + "   " + pieDer.y + "   " + pieDer.z);
+            //if (jt.ToString().Equals("AnkleRight"))
+            //{
+            //    rightFoot = GetVector3FromJoint(sourceJoint);
+            //    //print(pieDer.x + "   " + pieDer.y + "   " + pieDer.z);
 
-                rightAnkleQ = GetQuaternionJoint(body, jt);
-                rightAnkleY = map(rightAnkleQ.x, 0.9f, 0.3f, -30, -160);
-            }
+            //    rightAnkleQ = GetQuaternionJoint(body, jt);
+            //    rightAnkleY = map(rightAnkleQ.x, 0.9f, 0.3f, -30, -160);
+            //}
 
             if (jt.ToString().Equals("Neck"))
             {
