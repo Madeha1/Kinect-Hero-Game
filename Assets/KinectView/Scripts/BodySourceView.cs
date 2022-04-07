@@ -52,6 +52,7 @@ public class BodySourceView : MonoBehaviour
 
     public bool user = false;
 
+    private int speed = 6;
     //Dictionary of Bodies and their respective ID's
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
     private BodySourceManager _BodyManager;
@@ -159,7 +160,7 @@ public class BodySourceView : MonoBehaviour
                     else
                     {
                         sensorMessage.SetActive(false);
-                        change.moveSpeed = 10;
+                        change.moveSpeed = speed;
                     }
                 }
                 user = true;
@@ -197,7 +198,7 @@ public class BodySourceView : MonoBehaviour
                 else if(_BodyManager.isAvailable()) //check if there is one body and at the same time the sensor is connected
                 { 
                     sensorMessage.SetActive(false);
-                    change.moveSpeed = 10;
+                    change.moveSpeed = speed;
                 }
             }
         }

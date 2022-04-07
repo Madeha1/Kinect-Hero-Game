@@ -9,6 +9,12 @@ TagManager:
   - Obstacle
   - Hips
   - redScreen
+  - Hand
+  - startGame
+  - Help
+  - ExitGame
+  - MainMenu
+  - back
   layers:
   - Default
   - TransparentFX

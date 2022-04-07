@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Game2.unity
+- path: Assets/Scenes/Main Menu Kinect.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
