@@ -9,7 +9,6 @@ public class BodySourceManager : MonoBehaviour
     private Body[] _Data = null;
 
     public GameObject sensorMessage;
-    public Change change;
 
     public Body[] GetData()
     {
@@ -38,7 +37,7 @@ public class BodySourceManager : MonoBehaviour
         if (!isAvailable())
         {
             sensorMessage.SetActive(true);
-            change.moveSpeed = 0;
+            Change.moveSpeed = 0;
         }
 
         if (_Reader != null)
@@ -60,7 +59,7 @@ public class BodySourceManager : MonoBehaviour
         if(_Sensor == null)
         {
             sensorMessage.SetActive(true);
-            change.moveSpeed = 0;
+            Change.moveSpeed = 0;
         }
     }
     

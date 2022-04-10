@@ -15,6 +15,9 @@ TagManager:
   - ExitGame
   - MainMenu
   - back
+  - easy
+  - hard
+  - medium
   layers:
   - Default
   - TransparentFX

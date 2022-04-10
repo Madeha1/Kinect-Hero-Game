@@ -52,7 +52,7 @@ public class BodySourceView : MonoBehaviour
 
     public bool user = false;
 
-    private int speed = 6;
+    private float speed = Change.moveSpeed;
     //Dictionary of Bodies and their respective ID's
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
     private BodySourceManager _BodyManager;
@@ -106,7 +106,7 @@ public class BodySourceView : MonoBehaviour
         if (data == null)
         {
             sensorMessage.SetActive(true);
-            change.moveSpeed = 0;
+            Change.moveSpeed = speed;
 
             return;
         }
@@ -154,13 +154,11 @@ public class BodySourceView : MonoBehaviour
                     //When new Body added
                     if (_Bodies.Count > 1 || _Bodies.Count == 0)
                     {
-                        sensorMessage.SetActive(true);
-                        change.moveSpeed = 0;                        
+                        stopMoving();
                     }
                     else
                     {
-                        sensorMessage.SetActive(false);
-                        change.moveSpeed = speed;
+                        startMoving();
                     }
                 }
                 user = true;
@@ -192,13 +190,11 @@ public class BodySourceView : MonoBehaviour
                 //All the time(when a body is out) Just one player;
                 if (_Bodies.Count > 1 || _Bodies.Count == 0)
                 {
-                    sensorMessage.SetActive(true);
-                    change.moveSpeed = 0;
+                    stopMoving();
                 }
                 else if(_BodyManager.isAvailable()) //check if there is one body and at the same time the sensor is connected
-                { 
-                    sensorMessage.SetActive(false);
-                    change.moveSpeed = speed;
+                {
+                    startMoving();
                 }
             }
         }
@@ -397,4 +393,17 @@ public class BodySourceView : MonoBehaviour
 
         return m * x + c;
     }
+
+    public void stopMoving()
+    {
+        sensorMessage.SetActive(true);
+        Change.moveSpeed = 0;
+    }
+
+    public void startMoving()
+    {
+        sensorMessage.SetActive(false);
+        Change.moveSpeed = speed;
+    }
+
 }

@@ -8,7 +8,6 @@ public class collisions : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public CollectibleControler gameOver;
-    public Change speed;
 
     public HealthBar healthBar;
 
@@ -33,7 +32,7 @@ public class collisions : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            speed.moveSpeed = 0;
+            Change.moveSpeed = 0;
             gameOver.GameOver();
         }
     }

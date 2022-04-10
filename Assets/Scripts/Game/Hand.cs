@@ -18,7 +18,7 @@ public class Hand : MonoBehaviour
         print("test");
 
         if (collision.gameObject.CompareTag("startGame")) {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(5);
         }
         else if(collision.gameObject.CompareTag("Help"))
         {
@@ -28,13 +28,24 @@ public class Hand : MonoBehaviour
         {
             Application.Quit();
         }
-        else if (collision.gameObject.CompareTag("MainMenu"))
+        else if (collision.gameObject.CompareTag("MainMenu") || collision.gameObject.CompareTag("back"))
         {
             SceneManager.LoadScene(0);
         }
-        else if (collision.gameObject.CompareTag("back"))
+        else if (collision.gameObject.CompareTag("easy"))
         {
-            SceneManager.LoadScene(0);
+            Change.moveSpeed = 6;
+            SceneManager.LoadScene(1);
+        }
+        else if (collision.gameObject.CompareTag("medium"))
+        {
+            Change.moveSpeed = 8;
+            SceneManager.LoadScene(1);
+        }
+        else if (collision.gameObject.CompareTag("hard"))
+        {
+            Change.moveSpeed = 10;
+            SceneManager.LoadScene(1);
         }
         else
         {
