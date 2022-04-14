@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 43256551}
   m_Layer: 0
   m_Name: Hard
-  m_TagString: startGame
+  m_TagString: hard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43256550}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2999878, y: 0.53, z: 0}
+  m_LocalPosition: {x: 0.2999878, y: -0.5400059, z: 0}
   m_LocalScale: {x: 1.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 354102889}
   m_Layer: 0
   m_Name: Easy
-  m_TagString: startGame
+  m_TagString: easy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -315,7 +315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354102888}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2999878, y: 5.100006, z: 0}
+  m_LocalPosition: {x: 0.2999878, y: 4.03, z: 0}
   m_LocalScale: {x: 1.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 702012474}
   m_Layer: 0
   m_Name: Medium
-  m_TagString: startGame
+  m_TagString: medium
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -414,7 +414,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702012473}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2999878, y: 3.03, z: 0}
+  m_LocalPosition: {x: 0.2999878, y: 1.9599941, z: 0}
   m_LocalScale: {x: 1.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -625,7 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e6deb2d249d50438d2b2ef43710b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mBodySourceManager: {fileID: 0}
+  mBodySourceManager: {fileID: 2091954620}
   mJointObject: {fileID: 1581252307236616, guid: 184f2a9019d03ed47bc3d16a742f1acc, type: 3}
 --- !u!4 &2079585699
 Transform:
