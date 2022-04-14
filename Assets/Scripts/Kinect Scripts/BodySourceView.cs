@@ -9,8 +9,6 @@ public class BodySourceView : MonoBehaviour
     //public Material BoneMaterial;
     private Vector3 leftHand;
     private Vector3 rightHand;
-    private Vector3 leftFoot;
-    private Vector3 rightFoot;
     private Vector3 leftKnee;
     private Vector3 rightKnee;
     private Quaternion leftShoulderQ;
@@ -19,22 +17,14 @@ public class BodySourceView : MonoBehaviour
     private Vector3 rightElbow;
     private Quaternion headQ;
     private Vector3 pelvisSpineBase;//قاعدة العمود الفقري مع الحوض
-    //private Vector3 centro;
-    private Quaternion leftAnkleQ;
-    private Quaternion rightAnkleQ;
     private Quaternion torsoQ; //الجذع
 
 
     public GameObject rightHandObj;
     public GameObject leftHandObj;
-    public GameObject rightFootObj;
-    public GameObject leftFootObj;
-    public GameObject rightKneeObj;
-    public GameObject leftKneeObj;
     public GameObject rightElbowObj;
     public GameObject leftElbowObj;
     public GameObject pelvisObj;//حوض
-    //public GameObject centroTorso;
     public GameObject sensorMessage;
     public Change change;
 
@@ -170,14 +160,6 @@ public class BodySourceView : MonoBehaviour
                 rightHandObj.transform.position = new Vector3(rightHand.x, rightHand.y, rightHand.z);
                 leftHandObj.transform.position = new Vector3(leftHand.x, leftHand.y, leftHand.z);
 
-                //feet
-                //rightFootObj.transform.position = new Vector3(roundOut(rightFoot.x), roundOut(rightFoot.y), roundOut(rightFoot.z));
-                //leftFootObj.transform.position = new Vector3(roundOut(leftFoot.x), roundOut(leftFoot.y), roundOut(leftFoot.z));
-
-                //knee
-                rightKneeObj.transform.position = new Vector3(roundOut(rightKnee.x), roundOut(rightKnee.y), roundOut(rightKnee.z));
-                leftKneeObj.transform.position = new Vector3(roundOut(leftKnee.x), roundOut(leftKnee.y), roundOut(leftKnee.z));
-
                 //pelvis
                 pelvisObj.transform.position = new Vector3(pelvisSpineBase.x, pelvisSpineBase.y + 0.1f, pelvisSpineBase.z);
 
@@ -296,31 +278,6 @@ public class BodySourceView : MonoBehaviour
                 rightShoulderQ = GetQuaternionJoint(body, jt);
                 rightShoulderY = map(rightShoulderQ.x, 0.80f, 0.70f, 0, -30);
             }
-
-            //if (jt.ToString().Equals("AnkleLeft"))
-            //{
-            //    leftFoot = GetVector3FromJoint(sourceJoint);
-            //    //print(pieIzk.x + "   " + pieIzk.y + "   " + pieIzk.z);
-
-            //    leftAnkleQ = GetQuaternionJoint(body, jt);
-            //    if (leftAnkleQ.x < -0.6)
-            //    {
-            //        leftAnkleY = 90;
-            //    }
-            //    else
-            //    {
-            //        leftAnkleY = map(leftAnkleQ.x, 0.9f, -0.5f, 50, 170);
-            //    }
-            //}
-
-            //if (jt.ToString().Equals("AnkleRight"))
-            //{
-            //    rightFoot = GetVector3FromJoint(sourceJoint);
-            //    //print(pieDer.x + "   " + pieDer.y + "   " + pieDer.z);
-
-            //    rightAnkleQ = GetQuaternionJoint(body, jt);
-            //    rightAnkleY = map(rightAnkleQ.x, 0.9f, 0.3f, -30, -160);
-            //}
 
             if (jt.ToString().Equals("Neck"))
             {
