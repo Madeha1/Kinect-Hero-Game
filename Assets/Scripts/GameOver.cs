@@ -10,7 +10,7 @@ public class GameOver : MonoBehaviour
 
     void Start()
     {
-        int score = CollectibleControler.coinCount;
+        int score = CollectableControler.coinCount;
         gameObject.SetActive(true);
         pointsText.text = score.ToString();
     }
@@ -23,13 +23,13 @@ public class GameOver : MonoBehaviour
 
     public void Restart()
     {
-        CollectibleControler.coinCount = 0;
+        CollectableControler.coinCount = 0;
         SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
     {
-        CollectibleControler.coinCount = 0;
+        CollectableControler.coinCount = 0;
         SceneManager.LoadScene(1);
     }
 }

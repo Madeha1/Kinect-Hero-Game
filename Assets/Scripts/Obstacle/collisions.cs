@@ -7,7 +7,7 @@ public class collisions : MonoBehaviour
 
     public int maxHealth = 100;
     public int currentHealth;
-    public CollectibleControler gameOver;
+    public CollectableControler gameOver;
 
     public HealthBar healthBar;
 

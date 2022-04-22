@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-
     void OnTriggerEnter(Collider other)
     {
 
@@ -16,8 +13,6 @@ public class Finish : MonoBehaviour
         {
             Debug.Log("Finish");
             SceneManager.LoadScene(3);
-
-
         }
     }
 }

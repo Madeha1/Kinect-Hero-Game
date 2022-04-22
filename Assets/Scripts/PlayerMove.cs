@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
    // private Vector3 direction = Vector3.forward;
     public int maxHealth = 100;
     public int currentHealth;
-    public CollectibleControler gameOver;
+    public CollectableControler gameOver;
     public Change speed;
 
     public HealthBar healthBar;
