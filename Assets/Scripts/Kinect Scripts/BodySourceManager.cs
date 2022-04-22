@@ -80,7 +80,7 @@ public class BodySourceManager : MonoBehaviour
         }
     }
 
-    bool IsAvailable()
+    public bool IsAvailable()
     {
         return _sensor.IsAvailable;
     }

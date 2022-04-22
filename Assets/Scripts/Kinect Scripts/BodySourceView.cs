@@ -7,17 +7,17 @@ using UnityEngine.UI;
 public class BodySourceView : MonoBehaviour
 {
     //public Material BoneMaterial;
-    private Vector3 leftHand;
-    private Vector3 rightHand;
-    private Vector3 leftKnee;
-    private Vector3 rightKnee;
-    private Quaternion leftShoulderQ;
-    private Quaternion rightShoulderQ;
-    private Vector3 leftElbow;
-    private Vector3 rightElbow;
-    private Quaternion headQ;
-    private Vector3 pelvisSpineBase;//قاعدة العمود الفقري مع الحوض
-    private Quaternion torsoQ; //الجذع
+    private Vector3 _leftHand;
+    private Vector3 _rightHand;
+    private Vector3 _leftKnee;
+    private Vector3 _rightKnee;
+    private Quaternion _leftShoulderQ;
+    private Quaternion _rightShoulderQ;
+    private Vector3 _leftElbow;
+    private Vector3 _rightElbow;
+    private Quaternion _headQ;
+    private Vector3 _pelvisSpineBase;//قاعدة العمود الفقري مع الحوض
+    private Quaternion _torsoQ; //الجذع
 
 
     public GameObject rightHandObj;
@@ -30,14 +30,10 @@ public class BodySourceView : MonoBehaviour
 
     public float rightShoulderY;
     public float leftShoulderY;
-  
     public float leftAnkleY;
     public float rightAnkleY;
-
     public float headZ;
-
     public float chest;
-
     public Text data;
 
     public bool user = false;
@@ -157,15 +153,15 @@ public class BodySourceView : MonoBehaviour
                 RefreshBodyObject(body, _Bodies[body.TrackingId]);
 
                 //hands
-                rightHandObj.transform.position = new Vector3(rightHand.x, rightHand.y, rightHand.z);
-                leftHandObj.transform.position = new Vector3(leftHand.x, leftHand.y, leftHand.z);
+                rightHandObj.transform.position = new Vector3(_rightHand.x, _rightHand.y, _rightHand.z);
+                leftHandObj.transform.position = new Vector3(_leftHand.x, _leftHand.y, _leftHand.z);
 
                 //pelvis
-                pelvisObj.transform.position = new Vector3(pelvisSpineBase.x, pelvisSpineBase.y + 0.1f, pelvisSpineBase.z);
+                pelvisObj.transform.position = new Vector3(_pelvisSpineBase.x, _pelvisSpineBase.y + 0.1f, _pelvisSpineBase.z);
 
                 //elbows              
-                rightElbowObj.transform.position = new Vector3(rightElbow.x, rightElbow.y, rightElbow.z);
-                leftElbowObj.transform.position = new Vector3(leftElbow.x, leftElbow.y, leftElbow.z);
+                rightElbowObj.transform.position = new Vector3(_rightElbow.x, _rightElbow.y, _rightElbow.z);
+                leftElbowObj.transform.position = new Vector3(_leftElbow.x, _leftElbow.y, _leftElbow.z);
             }
             else
             {
@@ -174,7 +170,7 @@ public class BodySourceView : MonoBehaviour
                 {
                     stopMoving();
                 }
-                else if(_BodyManager.IsAvailable()) //check if there is one body and at the same time the sensor is connected
+                else if (_BodyManager.IsAvailable()) //check if there is one body and at the same time the sensor is connected
                 {
                     startMoving();
                 }
@@ -233,56 +229,56 @@ public class BodySourceView : MonoBehaviour
             //saves the location of each body joint in a variable
             if (jt.ToString().Equals("HandLeft"))
             {
-                leftHand = GetVector3FromJoint(sourceJoint);
+                _leftHand = GetVector3FromJoint(sourceJoint);
                 //print(manoIzk.x + "   " + manoIzk.y + "   " + manoIzk.z);
             }
 
             if (jt.ToString().Equals("HandRight"))
             {
-                rightHand = GetVector3FromJoint(sourceJoint);
+                _rightHand = GetVector3FromJoint(sourceJoint);
                 //print(manoDer.x + "   " + manoDer.y + "   " + manoDer.z);
             }
 
             if (jt.ToString().Equals("KneeLeft"))
             {
-                leftKnee = GetVector3FromJoint(sourceJoint);
+                _leftKnee = GetVector3FromJoint(sourceJoint);
                 //print(rodillaIzk.x + "   " + rodillaIzk.y + "   " + rodillaIzk.z);
             }
 
             if (jt.ToString().Equals("KneeRight"))
             {
-                rightKnee = GetVector3FromJoint(sourceJoint);
+                _rightKnee = GetVector3FromJoint(sourceJoint);
                 //print(rodillaDer.x + "   " + rodillaDer.y + "   " + rodillaDer.z);
             }
 
             if (jt.ToString().Equals("ElbowLeft"))
             {
-                leftElbow = GetVector3FromJoint(sourceJoint);
+                _leftElbow = GetVector3FromJoint(sourceJoint);
             }
 
             if (jt.ToString().Equals("ElbowRight"))
             {
-                rightElbow = GetVector3FromJoint(sourceJoint);
+                _rightElbow = GetVector3FromJoint(sourceJoint);
             }
 
             if (jt.ToString().Equals("ShoulderLeft"))
             {
-                leftShoulderQ = GetQuaternionJoint(body, jt);
-                leftShoulderY = map(leftShoulderQ.x, 0.70f, 0.80f, 0, -30);
+                _leftShoulderQ = GetQuaternionJoint(body, jt);
+                leftShoulderY = map(_leftShoulderQ.x, 0.70f, 0.80f, 0, -30);
                 //leftShoulderY = map(leftShoulderQ.x, 0.70f, 0.80f, 0, 30);
 
             }
 
             if (jt.ToString().Equals("ShoulderRight"))
             {
-                rightShoulderQ = GetQuaternionJoint(body, jt);
-                rightShoulderY = map(rightShoulderQ.x, 0.80f, 0.70f, 0, -30);
+                _rightShoulderQ = GetQuaternionJoint(body, jt);
+                rightShoulderY = map(_rightShoulderQ.x, 0.80f, 0.70f, 0, -30);
             }
 
             if (jt.ToString().Equals("Neck"))
             {
-                headQ = GetQuaternionJoint(body, jt);
-                float zAxis = headQ.x;
+                _headQ = GetQuaternionJoint(body, jt);
+                float zAxis = _headQ.x;
                 if (zAxis > 0.05f)
                 {
                     zAxis = 0.05f;
@@ -293,20 +289,20 @@ public class BodySourceView : MonoBehaviour
                 }
                 else
                 {
-                    zAxis = headQ.x;
+                    zAxis = _headQ.x;
                 }
                 zAxis = map(zAxis, -0.05f, 0.05f, -40, 40);
             }
 
             if (jt.ToString().Equals("SpineMid"))
             {
-                torsoQ = GetQuaternionJoint(body, jt);
-                chest = map(torsoQ.w, 0.4f, -0.3f, 110, 240);
+                _torsoQ = GetQuaternionJoint(body, jt);
+                chest = map(_torsoQ.w, 0.4f, -0.3f, 110, 240);
             }
 
             if (jt.ToString().Equals("SpineBase"))
             {
-                pelvisSpineBase = GetVector3FromJoint(sourceJoint);
+                _pelvisSpineBase = GetVector3FromJoint(sourceJoint);
                 //print(pelvisSpineBase.x + "   " + pelvisSpineBase.y + "   " + pelvisSpineBase.z);
             }
         }

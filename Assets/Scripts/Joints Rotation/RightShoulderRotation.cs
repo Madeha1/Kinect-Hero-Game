@@ -5,7 +5,7 @@ using UnityEngine;
 public class RightShoulderRotation: MonoBehaviour
 {
     public GameObject RightShoulder;
-    public GameObject objectWithBodySourcView;
+    public GameObject Body;
 
     public int X = 0;
     public int Y = 180;
@@ -14,9 +14,9 @@ public class RightShoulderRotation: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (objectWithBodySourcView.GetComponent<BodySourceView>().user)
+        if (Body.GetComponent<BodySourceView>().user)
         {
-            Z = objectWithBodySourcView.GetComponent<BodySourceView>().rightShoulderY;
+            Z = Body.GetComponent<BodySourceView>().rightShoulderY;
         }
 
         // Rotate the cube by converting the angles into a quaternion.

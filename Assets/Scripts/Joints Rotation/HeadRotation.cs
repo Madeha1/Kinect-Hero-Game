@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HeadRotation : MonoBehaviour
 {
-    public GameObject head;
-    public GameObject objectWithBodySourcViewScipt;
+    public GameObject Head;
+    public GameObject Body;
 
     public float X = 0;
     public float Y = 180;
@@ -15,12 +15,12 @@ public class HeadRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Z = objectWithBodySourcViewScipt.GetComponent<BodySourceView>().headZ;
+        Z = Body.GetComponent<BodySourceView>().headZ;
 
         // Rotate the cube by converting the angles into a quaternion.
         Quaternion targetHead = Quaternion.Euler(X, Y, Z);
 
         // Dampen towards the target rotation
-        head.transform.rotation = Quaternion.Slerp(transform.rotation, targetHead, Time.deltaTime * 5.0f);
+        Head.transform.rotation = Quaternion.Slerp(transform.rotation, targetHead, Time.deltaTime * 5.0f);
     }
 }

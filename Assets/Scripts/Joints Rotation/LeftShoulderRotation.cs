@@ -5,7 +5,7 @@ using UnityEngine;
 public class LeftShoulderRotation : MonoBehaviour
 {
     public GameObject LeftShoulder;
-    public GameObject objectWithBodySourcViewScipt;
+    public GameObject Body;
 
     public int X = 0;
     public int Y = 180;
@@ -14,9 +14,9 @@ public class LeftShoulderRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (objectWithBodySourcViewScipt.GetComponent<BodySourceView>().user)
+        if (Body.GetComponent<BodySourceView>().user)
         {
-            Z = objectWithBodySourcViewScipt.GetComponent<BodySourceView>().leftShoulderY;
+            Z = Body.GetComponent<BodySourceView>().leftShoulderY;
         }
 
         // Rotate the cube by converting the angles into a quaternion.
