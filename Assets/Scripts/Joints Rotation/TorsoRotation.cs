@@ -16,7 +16,7 @@ public class TorsoRotation : MonoBehaviour
     {
         if (Body.GetComponent<BodySourceView>().user)
         {
-            Y = Body.GetComponent<BodySourceView>().chest;
+            Y = Body.GetComponent<BodySourceView>().Chest;
         }
 
         // Rotate the cube by converting the angles into a quaternion.

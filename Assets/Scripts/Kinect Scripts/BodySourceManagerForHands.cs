@@ -4,27 +4,27 @@ using Windows.Kinect;
 
 public class BodySourceManagerForHands : MonoBehaviour 
 {    
-    private KinectSensor _Sensor;
-    private BodyFrameReader _Reader;
-    private Body[] _Data = null;
+    private KinectSensor _sensor;
+    private BodyFrameReader _reader;
+    private Body[] _data = null;
 
     public Body[] GetData()
     {
-        return _Data;
+        return _data;
     }
     
 
     void Start () 
     {
-        _Sensor = KinectSensor.GetDefault();
+        _sensor = KinectSensor.GetDefault();
 
-        if (_Sensor != null)
+        if (_sensor != null)
         {
-            _Reader = _Sensor.BodyFrameSource.OpenReader();
+            _reader = _sensor.BodyFrameSource.OpenReader();
             
-            if (!_Sensor.IsOpen)
+            if (!_sensor.IsOpen)
             {
-                _Sensor.Open();
+                _sensor.Open();
             }
         }
        
@@ -32,17 +32,17 @@ public class BodySourceManagerForHands : MonoBehaviour
     
     void Update () 
     {
-        if (_Reader != null)
+        if (_reader != null)
         {
-            var frame = _Reader.AcquireLatestFrame();
+            var frame = _reader.AcquireLatestFrame();
             if (frame != null)
             {
-                if (_Data == null)
+                if (_data == null)
                 {
-                    _Data = new Body[_Sensor.BodyFrameSource.BodyCount];
+                    _data = new Body[_sensor.BodyFrameSource.BodyCount];
                 }
                 
-                frame.GetAndRefreshBodyData(_Data);
+                frame.GetAndRefreshBodyData(_data);
                 
                 frame.Dispose();
                 frame = null;
@@ -52,25 +52,25 @@ public class BodySourceManagerForHands : MonoBehaviour
     
     void OnApplicationQuit()
     {
-        if (_Reader != null)
+        if (_reader != null)
         {
-            _Reader.Dispose();
-            _Reader = null;
+            _reader.Dispose();
+            _reader = null;
         }
         
-        if (_Sensor != null)
+        if (_sensor != null)
         {
-            if (_Sensor.IsOpen)
+            if (_sensor.IsOpen)
             {
-                _Sensor.Close();
+                _sensor.Close();
             }
             
-            _Sensor = null;
+            _sensor = null;
         }
     }
 
     public bool isAvailable()
     {
-        return _Sensor.IsAvailable;
+        return _sensor.IsAvailable;
     }
 }

@@ -7,10 +7,10 @@ using Joint = Windows.Kinect.Joint;
 
 public class BodySourceViewForHands : MonoBehaviour 
 {
-    public BodySourceManagerForHands mBodySourceManager;
-    public GameObject mJointObject;
+    public BodySourceManagerForHands BodySourceManager;
+    public GameObject JointObject;
     
-    private Dictionary<ulong, GameObject> mBodies = new Dictionary<ulong, GameObject>();
+    private Dictionary<ulong, GameObject> _bodies = new Dictionary<ulong, GameObject>();
     private List<JointType> _joints = new List<JointType>
     {
         JointType.HandLeft,
@@ -20,7 +20,7 @@ public class BodySourceViewForHands : MonoBehaviour
     void Update () 
     {
         #region Get Kinect Data
-        Body[] data = mBodySourceManager.GetData();
+        Body[] data = BodySourceManager.GetData();
              
         if (data == null)
         {
@@ -42,16 +42,16 @@ public class BodySourceViewForHands : MonoBehaviour
         #endregion
 
         #region Delete Kinect Bodies
-        List<ulong> knownIds = new List<ulong>(mBodies.Keys);
+        List<ulong> knownIds = new List<ulong>(_bodies.Keys);
         // First delete untracked bodies
         foreach (ulong trackingId in knownIds)
         {
             if (!trackedIds.Contains(trackingId))
             {
                 //destroy the game object
-                Destroy(mBodies[trackingId]);
+                Destroy(_bodies[trackingId]);
                 //remove from list
-                mBodies.Remove(trackingId);
+                _bodies.Remove(trackingId);
             }
         }
         #endregion
@@ -66,12 +66,12 @@ public class BodySourceViewForHands : MonoBehaviour
 
             if (body.IsTracked)
             {
-                if (!mBodies.ContainsKey(body.TrackingId))
+                if (!_bodies.ContainsKey(body.TrackingId))
                 {
-                    mBodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
+                    _bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
                 }
 
-                RefreshBodyObject(body, mBodies[body.TrackingId]);
+                RefreshBodyObject(body, _bodies[body.TrackingId]);
             }
         }
         #endregion
@@ -83,7 +83,7 @@ public class BodySourceViewForHands : MonoBehaviour
         
         foreach (JointType jt in _joints)
         {
-            GameObject newJoint = Instantiate(mJointObject);
+            GameObject newJoint = Instantiate(JointObject);
             newJoint.name = jt.ToString();
 
             //parent to body 

@@ -6,50 +6,39 @@ using UnityEngine.SceneManagement;
 
 public class Hand : MonoBehaviour
 {
-    public Transform mHandMesh;
-
+    public Transform HandMesh;
+    private Dictionary<string, int> _buttonScenes = new Dictionary<string, int>()//button name with scene numbers
+    { 
+        { "startGame",  5 },
+        { "Help", 4 },
+        { "ExitGame", -1 },
+        { "back", 0 },
+        { "MainMenu", 0 },
+        { "easy", 1 },
+        { "medium", 1 },
+        { "hard", 1 },
+    };
     private void Update()
     {
-        mHandMesh.position = Vector3.Lerp(mHandMesh.position, transform.position, Time.deltaTime * 15.0f);
+        HandMesh.position = Vector3.Lerp(HandMesh.position, transform.position, Time.deltaTime * 15.0f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("test");
-
-        if (collision.gameObject.CompareTag("startGame")) {
-            SceneManager.LoadScene(5);
-        }
-        else if(collision.gameObject.CompareTag("Help"))
+        foreach (var item in _buttonScenes)
         {
-            SceneManager.LoadScene(4);
-        }
-        else if (collision.gameObject.CompareTag("ExitGame"))
-        {
-            Application.Quit();
-        }
-        else if (collision.gameObject.CompareTag("MainMenu") || collision.gameObject.CompareTag("back"))
-        {
-            SceneManager.LoadScene(0);
-        }
-        else if (collision.gameObject.CompareTag("easy"))
-        {
-            Change.moveSpeed = 6;
-            SceneManager.LoadScene(1);
-        }
-        else if (collision.gameObject.CompareTag("medium"))
-        {
-            Change.moveSpeed = 8;
-            SceneManager.LoadScene(1);
-        }
-        else if (collision.gameObject.CompareTag("hard"))
-        {
-            Change.moveSpeed = 10;
-            SceneManager.LoadScene(1);
-        }
-        else
-        {
-            return;
-        }
+            if(collision.gameObject.CompareTag(item.Key))
+            {
+                int sceneNumber = item.Value;
+                if (sceneNumber != -1) {
+                    SceneManager.LoadScene(sceneNumber);
+                }
+                else
+                {
+                    Application.Quit();
+                }
+            }
+        } 
+       return;
     }
 }

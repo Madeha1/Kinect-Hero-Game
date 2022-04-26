@@ -15,7 +15,7 @@ public class HeadRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Z = Body.GetComponent<BodySourceView>().headZ;
+        Z = Body.GetComponent<BodySourceView>().HeadZ;
 
         // Rotate the cube by converting the angles into a quaternion.
         Quaternion targetHead = Quaternion.Euler(X, Y, Z);

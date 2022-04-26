@@ -16,7 +16,7 @@ public class RightShoulderRotation: MonoBehaviour
     {
         if (Body.GetComponent<BodySourceView>().user)
         {
-            Z = Body.GetComponent<BodySourceView>().rightShoulderY;
+            Z = Body.GetComponent<BodySourceView>().RightShoulderY;
         }
 
         // Rotate the cube by converting the angles into a quaternion.

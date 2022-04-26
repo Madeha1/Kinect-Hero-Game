@@ -20,29 +20,27 @@ public class BodySourceView : MonoBehaviour
     private Quaternion _torsoQ; //الجذع
 
 
-    public GameObject rightHandObj;
-    public GameObject leftHandObj;
-    public GameObject rightElbowObj;
-    public GameObject leftElbowObj;
-    public GameObject pelvisObj;//حوض
-    public GameObject sensorMessage;
+    public GameObject RightHandObj;
+    public GameObject LeftHandObj;
+    public GameObject RightElbowObj;
+    public GameObject LeftElbowObj;
+    public GameObject PelvisObj;//حوض
+    public GameObject PauseScreen;
     public Change change;
 
-    public float rightShoulderY;
-    public float leftShoulderY;
-    public float leftAnkleY;
-    public float rightAnkleY;
-    public float headZ;
-    public float chest;
-    public Text data;
+    public float RightShoulderY;
+    public float LeftShoulderY;
+    public float LeftAnkleY;
+    public float RightAnkleY;
+    public float HeadZ;
+    public float Chest;
+
+    private float _speed = Change.moveSpeed;
+    //Dictionary of Bodies and their respective ID's
+    private Dictionary<ulong, GameObject> _bodies = new Dictionary<ulong, GameObject>();
+    private BodySourceManager _bodyManager;
 
     public bool user = false;
-
-    private float speed = Change.moveSpeed;
-    //Dictionary of Bodies and their respective ID's
-    private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
-    private BodySourceManager _BodyManager;
-
 
     //Dictionary of Joints of the body in the kinect
     private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
@@ -78,24 +76,24 @@ public class BodySourceView : MonoBehaviour
     };
     void Start()
     {
-        _BodyManager = FindObjectOfType<BodySourceManager>();
+        _bodyManager = FindObjectOfType<BodySourceManager>();
     }
     void Update()
     {
         //Kinect initialization
-        if (_BodyManager == null)
+        if (_bodyManager == null)
         {
             return;
         }
 
-        Kinect.Body[] data = _BodyManager.GetData();
+        Kinect.Body[] data = _bodyManager.GetData();
         if (data == null)
         {
-            sensorMessage.SetActive(true);
-            Change.moveSpeed = speed;
-
+            PauseScreen.SetActive(true);
+            Change.moveSpeed = _speed;
             return;
         }
+
         //Add ID when a body is detected
         List<ulong> trackedIds = new List<ulong>();
         foreach (var body in data)
@@ -111,15 +109,15 @@ public class BodySourceView : MonoBehaviour
             }
         }
 
-        List<ulong> knownIds = new List<ulong>(_Bodies.Keys);
+        List<ulong> knownIds = new List<ulong>(_bodies.Keys);
 
         // Delete bodies that are no longer detected
         foreach (ulong trackingId in knownIds)
         {
             if (!trackedIds.Contains(trackingId))
             {
-                Destroy(_Bodies[trackingId]);
-                _Bodies.Remove(trackingId);
+                Destroy(_bodies[trackingId]);
+                _bodies.Remove(trackingId);
                 user = false;
             }
         }
@@ -134,11 +132,11 @@ public class BodySourceView : MonoBehaviour
             //A new body is created if detected
             if (body.IsTracked)
             {
-                if (!_Bodies.ContainsKey(body.TrackingId))
+                if (!_bodies.ContainsKey(body.TrackingId))
                 {
-                    _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
+                    _bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
                     //When new Body added
-                    if (_Bodies.Count > 1 || _Bodies.Count == 0)
+                    if (_bodies.Count > 1 || _bodies.Count == 0)
                     {
                         stopMoving();
                     }
@@ -148,29 +146,28 @@ public class BodySourceView : MonoBehaviour
                     }
                 }
                 user = true;
-
                 //place the cubes in the positions corresponding to each joint
-                RefreshBodyObject(body, _Bodies[body.TrackingId]);
+                RefreshBodyObject(body, _bodies[body.TrackingId]);
 
                 //hands
-                rightHandObj.transform.position = new Vector3(_rightHand.x, _rightHand.y, _rightHand.z);
-                leftHandObj.transform.position = new Vector3(_leftHand.x, _leftHand.y, _leftHand.z);
+                RightHandObj.transform.position = new Vector3(_rightHand.x, _rightHand.y, _rightHand.z);
+                LeftHandObj.transform.position = new Vector3(_leftHand.x, _leftHand.y, _leftHand.z);
 
                 //pelvis
-                pelvisObj.transform.position = new Vector3(_pelvisSpineBase.x, _pelvisSpineBase.y + 0.1f, _pelvisSpineBase.z);
+                PelvisObj.transform.position = new Vector3(_pelvisSpineBase.x, _pelvisSpineBase.y + 0.1f, _pelvisSpineBase.z);
 
                 //elbows              
-                rightElbowObj.transform.position = new Vector3(_rightElbow.x, _rightElbow.y, _rightElbow.z);
-                leftElbowObj.transform.position = new Vector3(_leftElbow.x, _leftElbow.y, _leftElbow.z);
+                RightElbowObj.transform.position = new Vector3(_rightElbow.x, _rightElbow.y, _rightElbow.z);
+                LeftElbowObj.transform.position = new Vector3(_leftElbow.x, _leftElbow.y, _leftElbow.z);
             }
             else
             {
                 //All the time(when a body is out) Just one player;
-                if (_Bodies.Count > 1 || _Bodies.Count == 0)
+                if (_bodies.Count > 1 || _bodies.Count == 0)
                 {
                     stopMoving();
                 }
-                else if (_BodyManager.IsAvailable()) //check if there is one body and at the same time the sensor is connected
+                else if (_bodyManager.IsAvailable()) //check if there is one body and at the same time the sensor is connected
                 {
                     startMoving();
                 }
@@ -189,7 +186,6 @@ public class BodySourceView : MonoBehaviour
     {
         //create a body and give it an id
         GameObject body = new GameObject("Body:" + id);
-
         //runs through the joints of the body in the kinect
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
@@ -202,7 +198,6 @@ public class BodySourceView : MonoBehaviour
             jointObj.name = jt.ToString();
             jointObj.transform.parent = body.transform;
         }
-
         return body;
     }
 
@@ -239,18 +234,6 @@ public class BodySourceView : MonoBehaviour
                 //print(manoDer.x + "   " + manoDer.y + "   " + manoDer.z);
             }
 
-            if (jt.ToString().Equals("KneeLeft"))
-            {
-                _leftKnee = GetVector3FromJoint(sourceJoint);
-                //print(rodillaIzk.x + "   " + rodillaIzk.y + "   " + rodillaIzk.z);
-            }
-
-            if (jt.ToString().Equals("KneeRight"))
-            {
-                _rightKnee = GetVector3FromJoint(sourceJoint);
-                //print(rodillaDer.x + "   " + rodillaDer.y + "   " + rodillaDer.z);
-            }
-
             if (jt.ToString().Equals("ElbowLeft"))
             {
                 _leftElbow = GetVector3FromJoint(sourceJoint);
@@ -264,7 +247,7 @@ public class BodySourceView : MonoBehaviour
             if (jt.ToString().Equals("ShoulderLeft"))
             {
                 _leftShoulderQ = GetQuaternionJoint(body, jt);
-                leftShoulderY = map(_leftShoulderQ.x, 0.70f, 0.80f, 0, -30);
+                LeftShoulderY = map(_leftShoulderQ.x, 0.70f, 0.80f, 0, -30);
                 //leftShoulderY = map(leftShoulderQ.x, 0.70f, 0.80f, 0, 30);
 
             }
@@ -272,7 +255,7 @@ public class BodySourceView : MonoBehaviour
             if (jt.ToString().Equals("ShoulderRight"))
             {
                 _rightShoulderQ = GetQuaternionJoint(body, jt);
-                rightShoulderY = map(_rightShoulderQ.x, 0.80f, 0.70f, 0, -30);
+                RightShoulderY = map(_rightShoulderQ.x, 0.80f, 0.70f, 0, -30);
             }
 
             if (jt.ToString().Equals("Neck"))
@@ -297,7 +280,7 @@ public class BodySourceView : MonoBehaviour
             if (jt.ToString().Equals("SpineMid"))
             {
                 _torsoQ = GetQuaternionJoint(body, jt);
-                chest = map(_torsoQ.w, 0.4f, -0.3f, 110, 240);
+                Chest = map(_torsoQ.w, 0.4f, -0.3f, 110, 240);
             }
 
             if (jt.ToString().Equals("SpineBase"))
@@ -307,22 +290,6 @@ public class BodySourceView : MonoBehaviour
             }
         }
     }
-
-    private static Color GetColorForState(Kinect.TrackingState state)
-    {
-        switch (state)
-        {
-            case Kinect.TrackingState.Tracked:
-                return Color.green;
-
-            case Kinect.TrackingState.Inferred:
-                return Color.red;
-
-            default:
-                return Color.black;
-        }
-    }
-
 
     //it returns the position of the joint
     public static Vector3 GetVector3FromJoint(Kinect.Joint joint)
@@ -343,20 +310,18 @@ public class BodySourceView : MonoBehaviour
     {
         var m = (y2 - y1) / (x2 - x1);
         var c = y1 - m * x1; // point of interest: c is also equal to y2 - m * x2, though float math might lead to slightly different results.
-
         return m * x + c;
     }
 
     public void stopMoving()
     {
-        sensorMessage.SetActive(true);
+        PauseScreen.SetActive(true);
         Change.moveSpeed = 0;
     }
 
     public void startMoving()
     {
-        sensorMessage.SetActive(false);
-        Change.moveSpeed = speed;
+        PauseScreen.SetActive(false);
+        Change.moveSpeed = _speed;
     }
-
 }
